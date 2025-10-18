@@ -28,11 +28,10 @@ fn display_menu(mut commands: Commands, asset_server: Res<AssetServer>) {
                 })
             ),
             (
-                Text::new("Quit"),
-                TextFont {
-                    font_size: 90.0,
-                    ..default()
-                },
+                menu_button(&*asset_server, "Quit".to_string()),
+                observe(|_activate: On<Activate>, mut exit: MessageWriter<AppExit>| {
+                    exit.write(AppExit::Success);
+                })
             )
             ],
             DespawnOnExit(GameState::StartMenu),

@@ -7,8 +7,9 @@ use bevy::{
     ui::{InteractionDisabled, Pressed},
     ui_widgets::Button,
 };
+use bevy::ui::Val::Px;
 
-const NORMAL_BUTTON: Color = Color::srgb(0.15, 0.15, 0.15);
+const NORMAL_BUTTON: Color = Color::srgb(0.42, 0.44, 0.23);
 const HOVERED_BUTTON: Color = Color::srgb(0.25, 0.25, 0.25);
 const PRESSED_BUTTON: Color = Color::srgb(0.35, 0.75, 0.35);
 const SLIDER_TRACK: Color = Color::srgb(0.05, 0.05, 0.05);
@@ -33,7 +34,7 @@ pub fn menu_button(asset_server: &AssetServer, label: String) -> impl Bundle {
         Node {
             width: px(300),
             height: px(65),
-            border: UiRect::all(px(5)),
+            border: UiRect::all(px(2)),
             justify_content: JustifyContent::Center,
             align_items: AlignItems::Center,
             ..default()
@@ -43,12 +44,12 @@ pub fn menu_button(asset_server: &AssetServer, label: String) -> impl Bundle {
         Hovered::default(),
         TabIndex(0),
         BorderColor::all(Color::BLACK),
-        BorderRadius::MAX,
+        BorderRadius::all(Px(10.0)),
         BackgroundColor(NORMAL_BUTTON),
         children![(
             Text::new(label),
             TextFont {
-                //font: asset_server.load("fonts/FiraSans-Bold.ttf"),
+                font: asset_server.load("fonts/BBHSansBogle-Regular.ttf"),
                 font_size: 33.0,
                 ..default()
             },
