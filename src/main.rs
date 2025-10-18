@@ -7,11 +7,13 @@ use crate::splash::splash_plugin;
 use crate::start_menu::start_menu_plugin;
 use bevy::prelude::*;
 use bevy::ui_widgets::UiWidgetsPlugins;
+use crate::in_game::plugin::in_game_plugin;
 use crate::ui_widgets::menu_button::menu_button_plugin;
 
 mod splash;
 mod start_menu;
 mod ui_widgets;
+mod in_game;
 
 fn main() {
     App::new()
@@ -19,6 +21,7 @@ fn main() {
         .add_plugins(splash_plugin)
         .add_plugins(start_menu_plugin)
         .add_plugins(menu_button_plugin)
+        .add_plugins(in_game_plugin)
         .init_state::<GameState>()
         .run();
 }
